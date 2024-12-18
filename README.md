@@ -1,5 +1,5 @@
 # 🚀 Fetching with GraphQL in Next.js
-A step-by-step implementation of GraphQL data fetching in a Next.js application, following best practices for modularity, scalability, and performance. This project demonstrates how to use Server-Side Rendering (SSR) with GraphQL for enhanced performance and SEO.
+A step-by-step guide of GraphQL data fetching in a Next.js application, following best practices for modularity, scalability, and performance. This project demonstrates how to use Server-Side Rendering (SSR) with GraphQL for enhanced performance and SEO.
 
 ## 🔥 Features
 - Seamless integration of GraphQL with Next.js App Router.
