@@ -34,7 +34,7 @@ const GET_SINGLE_POST = gql`
 export default async function ContentPage({
   params,
 }: {
-  params: { id: string }; // The id parameter from the route
+  params: Promise<{ id: string }>; // The id parameter from the route
 }) {
   const { id } = await params; // Extracting the post ID from the route parameters
   // Making the GraphQL query to fetch the single post using the ID
