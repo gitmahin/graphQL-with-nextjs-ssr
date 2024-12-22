@@ -27,14 +27,20 @@ type QueryType = {
   posts: PostType[];
 };
 
+export const dynamic = 'force-dynamic'
 // The main BlogPage component that fetches and displays posts
 export default async function BlogPage() {
   // Fetching the posts from the GraphQL API, with 'no-cache' fetch policy to ensure fresh data every time
-  const { data } = await apolloClient.query<QueryType>({
-    query: GET_POSTS, // The query being executed
-    variables: { page: 1 },
-    fetchPolicy: "no-cache",
-  });
-
-  return <BlogClientComponent initialPosts={data.posts} />;
+ try {
+   const { data } = await apolloClient.query<QueryType>({
+     query: GET_POSTS, // The query being executed
+     variables: { page: 1 },
+     fetchPolicy: "no-cache",
+   });
+ 
+   return <BlogClientComponent initialPosts={data.posts} />;
+ } catch (error) {
+  console.error("Error fetching posts:", error);
+    return <BlogClientComponent initialPosts={[]} />;
+ }
 }

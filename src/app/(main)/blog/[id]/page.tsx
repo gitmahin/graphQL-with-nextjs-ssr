@@ -41,6 +41,7 @@ export default async function ContentPage({
   const { data } = await apolloClient.query<QueryType>({
     query: GET_SINGLE_POST, // The GraphQL query to be executed
     variables: { id: parseInt(id) }, // Providing the ID as a variable, ensuring it's an integer
+    fetchPolicy: 'no-cache'
   });
 
   return (

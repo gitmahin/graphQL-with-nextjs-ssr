@@ -28,7 +28,7 @@ async function connDb(): Promise<void> {
     console.log("Database connected successfully");
   } catch (error) {
     // Log an error if the connection fails.
-    console.log("Database connection failed");
+    console.log("Database connection failed", error);
     // Exit the process with an error code to indicate failure.
     process.exit(1);
   }
