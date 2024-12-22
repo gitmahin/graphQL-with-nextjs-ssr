@@ -1,3 +1,4 @@
+import connDb from "@/lib/connDb";
 import postService from "@/services/posts.service";
 
 // Define the structure of arguments passed to the resolvers.
@@ -18,6 +19,7 @@ const postsResolver = {
       const limit = 10;
       const skip = (page - 1) * limit;
 
+      await connDb()
       const data = await postService.getAllPosts({
         skip,
         limit
@@ -27,6 +29,7 @@ const postsResolver = {
 
     // Fetch a single post based on its id. cause slug is not in data
     singlePost: async (_: unknown, { id }: SinglePostType) => {
+      await connDb()
       const data = await postService.getSinglePost({ id });
       return data;
     },

@@ -1,4 +1,3 @@
-import connDb from "@/lib/connDb";
 import postModel from "@/data/models/postModel";
 
 interface SinglePostType {
@@ -13,9 +12,6 @@ interface PostsType{
 }
 
 class PostService {
-  constructor() {
-    connDb();
-  }
 
   async getAllPosts({skip, limit}: PostsType) {
     const posts = await postModel.find().skip(skip).limit(limit);
