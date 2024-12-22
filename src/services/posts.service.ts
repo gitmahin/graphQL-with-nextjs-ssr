@@ -7,13 +7,18 @@ interface SinglePostType {
   limit?: number;
 }
 
+interface PostsType{
+  skip: number,
+  limit: number
+}
+
 class PostService {
   constructor() {
     connDb();
   }
 
-  async getAllPosts() {
-    const posts = await postModel.find();
+  async getAllPosts({skip, limit}: PostsType) {
+    const posts = await postModel.find().skip(skip).limit(limit);
     return posts;
   }
 

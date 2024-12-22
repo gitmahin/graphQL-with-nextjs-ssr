@@ -13,8 +13,8 @@ interface PostType {
 
 // GraphQL query to fetch posts, requesting only necessary fields
 const GET_POSTS = gql`
-  query {
-    posts {
+  query ($page: Int) {
+    posts(page: $page) {
       userId
       id
       title
@@ -32,7 +32,9 @@ export default async function BlogPage() {
   // Fetching the posts from the GraphQL API, with 'no-cache' fetch policy to ensure fresh data every time
   const { data } = await apolloClient.query<QueryType>({
     query: GET_POSTS, // The query being executed
+    variables: { page: 1 },
+    fetchPolicy: "no-cache",
   });
 
-  return <BlogClientComponent data={data.posts} />;
+  return <BlogClientComponent initialPosts={data.posts} />;
 }

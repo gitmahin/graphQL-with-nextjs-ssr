@@ -2,7 +2,7 @@ import postService from "@/services/posts.service";
 
 // Define the structure of arguments passed to the resolvers.
 interface ArgsType {
-  page?: number;
+  page: number;
 }
 
 interface SinglePostType {
@@ -15,10 +15,13 @@ const postsResolver = {
     // Fetch all posts with optional pagination logic.
     posts: async (_: unknown, { page }: ArgsType) => {
       // Example pagination logic (can be implemented as needed):
-      // const limit = 6;
-      // const skip = (page - 1) * limit;
+      const limit = 10;
+      const skip = (page - 1) * limit;
 
-      const data = await postService.getAllPosts();
+      const data = await postService.getAllPosts({
+        skip,
+        limit
+      });
       return data;
     },
 

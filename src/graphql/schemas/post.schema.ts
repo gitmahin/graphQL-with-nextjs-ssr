@@ -13,7 +13,7 @@ const postDefs = `#graphql
   # clients can execute, along with the return type for each. In this
   # case, the "posts" query returns an array of zero or more Posts (defined above).
   type Query {
-    posts: [Posts],
+    posts(page: Int): [Posts],
     singlePost(id: Int): Posts
   }
 `;
